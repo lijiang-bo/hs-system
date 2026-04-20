@@ -1,0 +1,89 @@
+<!--定义Mapper映射文件的约束和基本结构-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsu.mapper.StudentMapper">
+
+    <!-- 分页查询学生列表 -->
+    <select id="page" resultType="com.jsu.pojo.Student">
+        select s.*,
+               c.name as clazzName
+        from student as s
+        left join clazz c on s.clazz_id = c.id
+        <where>
+            <if test="name != null and name != ''">
+                and s.name like concat('%', #{name}, '%')
+            </if>
+            <if test="degree != null and degree != ''">
+                and s.degree = #{degree}
+            </if>
+            <if test="clazzId != null and clazzId != ''">
+                and s.clazz_id = #{clazzId}
+            </if>
+        </where>
+        order by s.update_time desc
+    </select>
+
+    <!-- 添加学生 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into student (name, no, gender, phone, id_card, is_college, address, degree, graduation_date, clazz_id, violation_count, violation_score, create_time, update_time)
+        values (#{name}, #{no}, #{gender}, #{phone}, #{idCard}, #{isCollege}, #{address}, #{degree}, #{graduationDate}, #{clazzId}, #{violationCount}, #{violationScore}, NOW(), NOW())
+    </insert>
+
+    <!-- 根据ID查询学生信息 -->
+    <select id="selectById" resultType="com.jsu.pojo.Student">
+        select id, name, no, gender, phone, id_card as idCard, is_college as isCollege, address, degree, graduation_date, clazz_id as clazzId, violation_count as violationCount, violation_score as violationScore, create_time as createTime, update_time as updateTime
+        from student
+        where id = #{id}
+    </select>
+
+    <!-- 修改学生信息 -->
+    <update id="updateById">
+        update student
+        set name = #{name},
+            no = #{no},
+            gender = #{gender},
+            phone = #{phone},
+            id_card = #{idCard},
+            is_college = #{isCollege},
+            address = #{address},
+            degree = #{degree},
+            graduation_date = #{graduationDate},
+            clazz_id = #{clazzId},
+            violation_count = #{violationCount},
+            violation_score = #{violationScore},
+            update_time = NOW()
+        where id = #{id}
+    </update>
+
+    <!-- 删除学生信息 -->
+    <delete id="deleteById">
+        delete from student where id = #{id}
+    </delete>
+
+    <!-- 违纪处理 - 增加违纪次数和扣分 -->
+    <update id="updateViolation">
+        update student
+        set violation_count = violation_count + 1,
+            violation_score = violation_score + #{score},
+            update_time = NOW()
+        where id = #{id}
+    </update>
+
+    <!-- 统计学员的学历分布 -->
+    <select id="countStudentDegreeData" resultType="java.util.Map">
+        select (case degree
+                    when 1 then '初中'
+                    when 2 then '高中'
+                    when 3 then '大专'
+                    when 4 then '本科'
+                    when 5 then '硕士'
+                    when 6 then '博士'
+                    else '其他' end) as name,
+               count(*) as value
+        from student
+        group by degree
+        order by degree
+    </select>
+
+</mapper>

@@ -1,0 +1,121 @@
+:root {
+  --pro-bg: #f5f7fb;
+  --pro-card: #ffffff;
+  --pro-text: #1f2329;
+  --pro-text-secondary: #667085;
+  --pro-border: #e7ebf3;
+  --pro-primary: #1677ff;
+  --pro-sidebar: #001529;
+  --pro-sidebar-hover: #112545;
+}
+
+body {
+  background: var(--pro-bg);
+  color: var(--pro-text);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  z-index: -2;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(18px);
+}
+
+body::before {
+  top: -120px;
+  right: -120px;
+  background: radial-gradient(circle, rgba(22, 119, 255, 0.22), rgba(22, 119, 255, 0.02) 65%);
+}
+
+body::after {
+  left: -120px;
+  bottom: -140px;
+  background: radial-gradient(circle, rgba(54, 207, 201, 0.2), rgba(54, 207, 201, 0.02) 68%);
+}
+
+#app::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.pro-page {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pro-card {
+  background: var(--pro-card);
+  border: 1px solid var(--pro-border);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.pro-card::after {
+  content: '';
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(22, 119, 255, 0.13), rgba(22, 119, 255, 0));
+  pointer-events: none;
+}
+
+.pro-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--pro-border);
+}
+
+.pro-card-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pro-card-body {
+  padding: 14px 16px;
+}
+
+.pro-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.pro-stat-number {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 8px;
+  color: #0f172a;
+}
+
+.el-table th.el-table__cell {
+  background: #fafcff !important;
+  color: #475467;
+}
+
+.el-table {
+  --el-table-border-color: #e7ebf3;
+}
