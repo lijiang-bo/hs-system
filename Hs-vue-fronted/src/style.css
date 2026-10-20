@@ -1,0 +1,310 @@
+﻿/* ===== Hs Pro Design System =====
+ * Mood: 清晨图书馆 — 通透晨光，专注静谧
+ * Strategy: Committed — cobalt carries 30-60%
+ */
+
+/* ---- OKLCH Palette ---- */
+:root {
+  /* Brand */
+  --hs-primary: oklch(0.52 0.165 230);
+  --hs-primary-hover: oklch(0.44 0.175 230);
+  --hs-primary-light: oklch(0.88 0.04 230);
+  --hs-primary-subtle: oklch(0.95 0.015 230);
+
+  /* Accent — warm coral */
+  --hs-accent: oklch(0.58 0.19 20);
+  --hs-accent-hover: oklch(0.50 0.20 20);
+  --hs-accent-light: oklch(0.88 0.06 20);
+
+  /* Surfaces */
+  --hs-bg: oklch(1 0 0);
+  --hs-surface: oklch(0.985 0.001 230);
+  --hs-sidebar: oklch(0.10 0.02 240);
+  --hs-sidebar-hover: oklch(0.17 0.035 240);
+  --hs-sidebar-active: oklch(0.22 0.04 240);
+  --hs-header: oklch(1 0 0);
+
+  /* Text */
+  --hs-ink: oklch(0.20 0.015 250);
+  --hs-ink-secondary: oklch(0.48 0.01 250);
+  --hs-ink-muted: oklch(0.65 0.008 250);
+  --hs-ink-inverse: oklch(0.97 0.002 230);
+
+  /* Borders */
+  --hs-border: oklch(0.91 0.004 220);
+  --hs-border-light: oklch(0.95 0.002 220);
+
+  /* Semantic */
+  --hs-success: oklch(0.62 0.18 145);
+  --hs-success-light: oklch(0.90 0.06 145);
+  --hs-warning: oklch(0.68 0.17 85);
+  --hs-warning-light: oklch(0.93 0.08 85);
+  --hs-danger: oklch(0.52 0.19 25);
+  --hs-danger-light: oklch(0.90 0.06 25);
+
+  /* Shadows */
+  --hs-shadow-sm: 0 1px 3px oklch(0.20 0.01 250 / 0.06);
+  --hs-shadow-md: 0 4px 12px oklch(0.20 0.01 250 / 0.07);
+  --hs-shadow-lg: 0 8px 24px oklch(0.20 0.01 250 / 0.08);
+
+  /* Radii */
+  --hs-radius-sm: 6px;
+  --hs-radius-md: 10px;
+  --hs-radius-lg: 14px;
+
+  /* Layout */
+  --hs-sidebar-width: 236px;
+  --hs-header-height: 56px;
+
+  /* Typography */
+  --hs-font: "Inter", "SF Pro Text", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+
+  /* ===== Element Plus overrides ===== */
+  --el-color-primary: oklch(0.52 0.165 230);
+  --el-color-primary-light-3: oklch(0.70 0.10 230);
+  --el-color-primary-light-5: oklch(0.80 0.07 230);
+  --el-color-primary-light-7: oklch(0.88 0.04 230);
+  --el-color-primary-light-8: oklch(0.92 0.025 230);
+  --el-color-primary-light-9: oklch(0.95 0.015 230);
+  --el-color-primary-dark-2: oklch(0.44 0.175 230);
+  --el-color-success: oklch(0.62 0.18 145);
+  --el-color-warning: oklch(0.68 0.17 85);
+  --el-color-danger: oklch(0.52 0.19 25);
+  --el-bg-color: oklch(1 0 0);
+  --el-bg-color-page: var(--hs-bg);
+  --el-bg-color-overlay: var(--hs-surface);
+  --el-text-color-primary: var(--hs-ink);
+  --el-text-color-regular: var(--hs-ink-secondary);
+  --el-text-color-secondary: var(--hs-ink-muted);
+  --el-border-color: var(--hs-border);
+  --el-border-color-light: var(--hs-border-light);
+  --el-border-radius-base: var(--hs-radius-sm);
+  --el-border-radius-small: 4px;
+  --el-font-family: var(--hs-font);
+  --el-font-size-base: 14px;
+}
+
+/* ---- Global resets ---- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--hs-font);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--hs-ink);
+  background: var(--hs-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app { min-height: 100vh; }
+
+a { color: var(--hs-primary); text-decoration: none; }
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--hs-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--hs-ink-muted); }
+
+/* ---- Pro page shell ---- */
+.pro-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 4px;
+}
+
+/* ---- Pro card ---- */
+.pro-card {
+  background: var(--hs-surface);
+  border: 1px solid var(--hs-border);
+  border-radius: var(--hs-radius-md);
+  box-shadow: var(--hs-shadow-sm);
+  overflow: hidden;
+}
+
+.pro-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--hs-border-light);
+}
+
+.pro-card-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--hs-ink);
+  letter-spacing: -0.01em;
+}
+
+.pro-card-body { padding: 20px; }
+
+/* ---- Pro toolbar ---- */
+.pro-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+/* ---- Pro stat ---- */
+.pro-stat-number {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-top: 6px;
+  color: var(--hs-ink);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Element Plus fine-tune ---- */
+.el-table th.el-table__cell {
+  background: oklch(0.975 0.001 230) !important;
+  color: var(--hs-ink-secondary);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+}
+
+.el-table {
+  --el-table-border-color: var(--hs-border-light);
+  --el-table-header-bg-color: oklch(0.975 0.001 230);
+  font-size: 13px;
+}
+
+.el-table .el-table__row:hover > td {
+  background: var(--hs-primary-subtle) !important;
+}
+
+.el-button--primary {
+  --el-button-bg-color: var(--hs-primary);
+  --el-button-border-color: var(--hs-primary);
+  --el-button-hover-bg-color: var(--hs-primary-hover);
+  --el-button-hover-border-color: var(--hs-primary-hover);
+  font-weight: 500;
+}
+
+.el-button--primary.is-plain {
+  --el-button-text-color: var(--hs-primary);
+  --el-button-bg-color: var(--hs-primary-light);
+  --el-button-border-color: var(--hs-primary-light);
+}
+
+.el-tabs__active-bar { background: var(--hs-primary) !important; }
+.el-tabs__item.is-active { color: var(--hs-primary) !important; }
+
+.el-pagination {
+  --el-pagination-button-bg-color: var(--hs-surface);
+}
+
+.el-dialog {
+  --el-dialog-bg-color: var(--hs-surface);
+  border-radius: var(--hs-radius-lg);
+}
+
+.el-input__wrapper {
+  border-radius: var(--hs-radius-sm);
+  box-shadow: 0 0 0 1px var(--hs-border) inset;
+}
+
+.el-input__wrapper:hover { box-shadow: 0 0 0 1px var(--hs-ink-muted) inset; }
+.el-input__wrapper.is-focus { box-shadow: 0 0 0 2px var(--hs-primary) inset !important; }
+
+.el-select .el-input__wrapper { border-radius: var(--hs-radius-sm); }
+
+.el-tag {
+  --el-tag-bg-color: var(--hs-primary-light);
+  --el-tag-border-color: transparent;
+  --el-tag-text-color: var(--hs-primary);
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.el-tag.el-tag--success {
+  --el-tag-bg-color: var(--hs-success-light);
+  --el-tag-text-color: var(--hs-success);
+}
+
+.el-tag.el-tag--warning {
+  --el-tag-bg-color: var(--hs-warning-light);
+  --el-tag-text-color: var(--hs-warning);
+}
+
+.el-tag.el-tag--danger {
+  --el-tag-bg-color: var(--hs-danger-light);
+  --el-tag-text-color: var(--hs-danger);
+}
+
+.el-menu {
+  --el-menu-bg-color: transparent;
+  --el-menu-text-color: oklch(0.72 0.015 240);
+  --el-menu-hover-bg-color: var(--hs-sidebar-hover);
+  --el-menu-active-color: oklch(1 0 0);
+  border-right: none !important;
+}
+
+.el-menu-item {
+  border-radius: 8px;
+  margin: 2px 8px;
+  font-size: 14px;
+  transition: all 0.15s ease;
+}
+
+.el-menu-item.is-active { background: var(--hs-sidebar-active) !important; font-weight: 600; }
+.el-menu-item:hover { background: var(--hs-sidebar-hover) !important; }
+
+.el-avatar { font-weight: 600; }
+
+/* ---- Pro pagination wrapper ---- */
+.pro-pagination {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ---- Toolbar input/select widths ---- */
+.pro-search-input { width: 180px; }
+.pro-search-select { width: 120px; }
+.pro-search-select-md { width: 160px; }
+
+/* ---- Form full-width control ---- */
+.pro-form-full { width: 100%; }
+
+/* ---- Tab section gutter ---- */
+.pro-tab-section { margin-bottom: 16px; }
+
+/* ---- Empty state hint ---- */
+.pro-empty-hint {
+  color: var(--hs-ink-muted);
+  font-size: 13px;
+}
+
+/* ---- Avatar thumbnail ---- */
+.pro-avatar-thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--hs-radius-sm);
+  object-fit: cover;
+}
+
+/* ---- Work experience inline form ---- */
+.pro-expr-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+/* ---- Transitions ---- */
+.fade-enter-active, .fade-leave-active { transition: opacity 0.2s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
