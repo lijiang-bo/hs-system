@@ -14,7 +14,7 @@ spring:
     url: jdbc:mysql://localhost:3306/hs
     #    url: jdbc:mysql://mysql:3306/hs
     username: root
-    password: 1234
+    password: 071029jb
 
 # 文件上传路径配置
 tlias:
