@@ -17,6 +17,7 @@ const routes = [
       { path: 'depts', name: 'depts', component: () => import('../views/DeptView.vue') },
       { path: 'clazzs', name: 'clazzs', component: () => import('../views/ClazzView.vue') },
       { path: 'students', name: 'students', component: () => import('../views/StudentView.vue') },
+      { path: 'disciplines', name: 'disciplines', component: () => import('../views/DisciplineView.vue') },
       { path: 'logs', name: 'logs', component: () => import('../views/LogView.vue') },
     ],
   },
@@ -34,6 +35,7 @@ const routeRoleMap = {
   '/depts': [1, 2, 3],
   '/clazzs': [1, 2, 3],
   '/students': [1, 2, 3],
+  '/disciplines': [1, 2, 3],
   '/dashboard': [1, 2, 3],
 }
 

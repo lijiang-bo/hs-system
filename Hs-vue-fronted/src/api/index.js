@@ -36,6 +36,8 @@ export const uploadImageApi = (file) => {
 
 export const getLogPageApi = (params) => http.get('/log/page', { params })
 
+export const getDisciplinePageApi = (params) => http.get('/disciplines', { params })
+
 export const getEmpJobDataApi = () => http.get('/report/empJobData')
 export const getEmpGenderDataApi = () => http.get('/report/empGenderData')
 export const getStudentCountDataApi = () => http.get('/report/studentCountData')

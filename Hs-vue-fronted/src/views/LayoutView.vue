@@ -15,6 +15,7 @@ const allPageMenu = [
   { value: '部门管理', path: '/depts', icon: 'OfficeBuilding', roles: [1, 2, 3] },
   { value: '班级管理', path: '/clazzs', icon: 'Reading', roles: [1, 2, 3] },
   { value: '学员管理', path: '/students', icon: 'School', roles: [1, 2, 3] },
+  { value: '违纪管理', path: '/disciplines', icon: 'Warning', roles: [1, 2, 3] },
   { value: '日志管理', path: '/logs', icon: 'Document', roles: [1, 2] },
 ]
 
